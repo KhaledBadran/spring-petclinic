@@ -17,12 +17,14 @@ pipeline {
             }
         }
         stage('Deploy') {
-                  when {
-                       branch 'master'
-                  }
-                  steps {
-                        echo 'Deploying stage has been executed'
-                  }
+         steps {
+		when {
+			branch 'master'
+			echo "Deploying..."
+                	bat "./mvnw deploy"
+		}
+          }
+        }
         }
     }
     post {
